@@ -13,9 +13,8 @@ public class Main {
         SessionFactory sessionFactory = new SessionFactoryImpl(initializeDataSource());
         Session session = sessionFactory.createSession();
         Person person = session.find(Person.class, 1L);
-        person.setFirstName("Yuriy");
-        person.setLastName("Fomin");
-        System.out.println(person);
+
+        person.getNotes().forEach(System.out::println);
         session.close();
     }
 

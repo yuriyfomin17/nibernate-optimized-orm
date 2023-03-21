@@ -157,7 +157,9 @@ public class JdbcEntityDao {
             String identifierName = JdbcUtil.getIdentifierFieldName(cachedInstance.getClass());
             Object identifierValue = JdbcUtil.getIdentifierValue(cachedInstance);
             String formattedUpdateStatement = prepareUpdateStatement(tableName, parameters, identifierName, identifierValue);
-            sqlQueue.add(formattedUpdateStatement);
+            if (!parametersToUpdate.isEmpty()){
+                sqlQueue.add(formattedUpdateStatement);
+            }
         }
     }
 
